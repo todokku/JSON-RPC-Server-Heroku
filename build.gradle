@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'net.weibeld.jsonrpc.Server'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.rabbitmq:amqp-client:5.1.0'
+}
+
+// The "stage" task is run by Heroku for building the app
+task stage(dependsOn: 'build')
