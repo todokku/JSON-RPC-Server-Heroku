@@ -6,7 +6,6 @@ import com.rabbitmq.tools.jsonrpc.JsonRpcServer;
 
 class Server {
 
-    // Queue on which client sends RPC requests to server
     private static final String QUEUE = "json-rpc-queue";
 
     public static void main(String[] args) throws Exception {
@@ -21,11 +20,12 @@ class Server {
         channel.queueDeclare(QUEUE, false, false, false, null);
 
         // Create JSON-RPC server providing remote methods defined in Service 
-        JsonRpcServer server = new JsonRpcServer(channel, QUEUE,
+        JsonRpcServer server = new JsonRpcServer(channel,
+                                                 QUEUE,
                                                  Service.class,
                                                  new ServiceImpl());
 
-        // Start listening for RPC requests
+        // Start listening for RPC requests from client
         server.mainloop();
     }
 }

@@ -1,5 +1,9 @@
 package net.weibeld.jsonrpc;
 
+/**
+ * Service interface declaring the remote methods provided by the JSON-RPC
+ * server to the JSON-RPC client.
+ */
 public interface Service {
 
     /**
